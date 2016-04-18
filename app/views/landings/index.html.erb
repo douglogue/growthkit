@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h2>Your Lead Gen Pages</h2>
-
-<div class="container-fluid">
+<div class="container">
+  <h2>Your Lead Gen Pages</h2>
   <div class="row">
     <% @landings.each do |landing| %>
     <%= link_to(landing) do %>
-      <div class="card col-md-4">
-        <div class="card-block">
+      <div class="col-md-4">
+        <%= image_tag attachment_url(landing, :hero_image), class: 'card-img-top', style:'width: 100%;' %>
+        <div class="card card-block">
           <h4 class="card-title"><%= landing.title %></h4>
           <p class="card-text"><%= landing.subtitle %></p>
           <% if landing.user == current_user %>
