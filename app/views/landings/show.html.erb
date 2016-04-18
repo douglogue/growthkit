@@ -1,9 +1,14 @@
-
 <p id="notice"><%= notice %></p>
-
-<h1><%= @landing.title %></h1>
-<p><%= @landing.subtitle %></p>
-<p><%= @landing.slug %></p>
 
 <%= link_to 'Edit', edit_landing_path(@landing) %> |
 <%= link_to 'Back', landings_path %>
+<div class="hero-bg">
+  <%= image_tag attachment_url(@landing, :hero_image), class: 'img-fluid' %>
+</div>
+
+<div class="hero">
+  <h1><%= @landing.title %></h1>
+  <p><%= @landing.subtitle %></p>
+
+  <button class="btn btn-primary">Get on the list</button>
+</div>

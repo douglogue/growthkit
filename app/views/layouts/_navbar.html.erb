@@ -1,0 +1,18 @@
+<nav class="navbar navbar-light bg-faded">
+  <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+    &#9776;
+  </button>
+  <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+    <a class="navbar-brand" href="#">Lander</a>
+    <ul class="nav navbar-nav pull-xs-right">
+      <% if user_signed_in? %>
+        <li class="nav-item"><%= link_to 'Create New Landing Page', new_landing_path, class: 'nav-link' %></li>
+        <li class="nav-item"><%= link_to 'Account', edit_user_registration_path, class: 'nav-link' %></li>
+        <li class="nav-item"><%= link_to 'Logout', destroy_user_session_path, class: 'nav-link', :method => :delete %></li>
+      <% else %>
+        <li class="nav-item"><%= link_to 'Sign in', new_user_session_path, class: 'btn btn-link' %></li>
+        <li class="nav-item"><%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary-outline' %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

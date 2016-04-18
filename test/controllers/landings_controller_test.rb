@@ -18,7 +18,7 @@ class LandingsControllerTest < ActionController::TestCase
 
   test "should create landing" do
     assert_difference('Landing.count') do
-      post :create, landing: { bg_image: @landing.bg_image, slug: @landing.slug, subtitle: @landing.subtitle, title: @landing.title }
+      post :create, landing: { slug: @landing.slug, subtitle: @landing.subtitle, title: @landing.title }
     end
 
     assert_redirected_to landing_path(assigns(:landing))
@@ -35,7 +35,7 @@ class LandingsControllerTest < ActionController::TestCase
   end
 
   test "should update landing" do
-    patch :update, id: @landing, landing: { bg_image: @landing.bg_image, slug: @landing.slug, subtitle: @landing.subtitle, title: @landing.title }
+    patch :update, id: @landing, landing: { slug: @landing.slug, subtitle: @landing.subtitle, title: @landing.title }
     assert_redirected_to landing_path(assigns(:landing))
   end
 

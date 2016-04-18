@@ -12,6 +12,14 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise', '~> 3.5', '>= 3.5.6'
+gem 'simple_form', '~> 3.2', '>= 3.2.1'
+gem 'bootstrap', '~> 4.0.0.alpha3'
+gem "refile", require: ["refile/rails"]
+gem "refile-mini_magick"
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

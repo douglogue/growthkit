@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<div id="promoBar"  class="promo-bar-wrapper">
+  <div class="promo-bar">
+    <h1><%= @promo_bar.headline %></h1>
+    <%= link_to 'Click Here', @promo_bar.link, class: 'btn btn-secondary' %>
+  </div>
+</div>
+
+<% if @promo_bar.user == current_user %>
+  <%= link_to 'Edit', edit_promo_bar_path(@promo_bar) %> |
+  <%= link_to 'Back', promo_bars_path %>
+<% end %>

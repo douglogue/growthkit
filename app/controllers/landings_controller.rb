@@ -1,6 +1,7 @@
 class LandingsController < ApplicationController
   before_action :set_landing, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_user!, except: [:index, :show]
+  
   # GET /landings
   # GET /landings.json
   def index
@@ -14,7 +15,7 @@ class LandingsController < ApplicationController
 
   # GET /landings/new
   def new
-    @landing = Landing.new
+    @landing = current_user.landings.build
   end
 
   # GET /landings/1/edit
@@ -24,7 +25,7 @@ class LandingsController < ApplicationController
   # POST /landings
   # POST /landings.json
   def create
-    @landing = Landing.new(landing_params)
+    @landing = current_user.landings.build(landing_params)
 
     respond_to do |format|
       if @landing.save
@@ -69,6 +70,6 @@ class LandingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def landing_params
-      params.require(:landing).permit(:title, :subtitle, :slug, :bg_image)
+      params.require(:landing).permit(:title, :subtitle, :slug, :hero_image)
     end
 end

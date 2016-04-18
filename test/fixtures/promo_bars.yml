@@ -2,12 +2,12 @@
 
 one:
   title: MyString
-  subtitle: MyString
-  slug: MyString
-
+  headline: MyString
+  link: MyString
+  user_id: 1
 
 two:
   title: MyString
-  subtitle: MyString
-  slug: MyString
-
+  headline: MyString
+  link: MyString
+  user_id: 1

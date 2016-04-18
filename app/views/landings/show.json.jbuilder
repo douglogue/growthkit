@@ -1,1 +1,1 @@
-json.extract! @landing, :id, :title, :subtitle, :slug, :bg_image, :created_at, :updated_at
+json.extract! @landing, :id, :title, :subtitle, :slug, :created_at, :updated_at

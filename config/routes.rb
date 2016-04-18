@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :promo_bars
   devise_for :users
   resources :landings
   # The priority is based upon order of creation: first created -> highest priority.
