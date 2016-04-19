@@ -6,4 +6,12 @@ class User < ActiveRecord::Base
 
   has_many :landings
   has_many :promo_bars
+
+  after_create :subscribe_user_to_mailing_list
+
+  private
+
+  def subscribe_user_to_mailing_list
+    SubscribeUserToMailingListJob.perform_async(self)
+  end
 end

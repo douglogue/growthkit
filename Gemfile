@@ -16,6 +16,8 @@ gem 'simple_form', '~> 3.2', '>= 3.2.1'
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem "refile", require: ["refile/rails"]
 gem "refile-mini_magick"
+gem 'gibbon', '~> 2.2', '>= 2.2.3'
+gem 'sucker_punch', '~> 2.0'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
