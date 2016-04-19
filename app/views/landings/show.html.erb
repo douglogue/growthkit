@@ -1,7 +1,7 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_landing_path(@landing) %> |
-<%= link_to 'Back', landings_path %>
+<% if @landing.user == current_user %>
+  <%= link_to 'Edit', edit_landing_path(@landing) %> |
+  <%= link_to 'Back', landings_path %>
+<% end %>
 <div class="hero-bg">
   <%= image_tag attachment_url(@landing, :hero_image), class: 'img-fluid' %>
 </div>

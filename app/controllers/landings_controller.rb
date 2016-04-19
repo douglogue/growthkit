@@ -1,11 +1,11 @@
 class LandingsController < ApplicationController
   before_action :set_landing, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :authenticate_user!, except: [:show]
   
   # GET /landings
   # GET /landings.json
   def index
-    @landings = Landing.all
+    @landings = current_user.landings.all
   end
 
   # GET /landings/1
