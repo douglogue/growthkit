@@ -4,19 +4,19 @@
   <h2>Your Lead Gen Pages</h2>
   <div class="row">
     <% @landings.each do |landing| %>
-    <%= link_to(landing) do %>
       <div class="col-md-4">
-        <%= image_tag attachment_url(landing, :hero_image), class: 'card-img-top', style:'width: 100%;' %>
-        <div class="card card-block">
-          <h4 class="card-title"><%= landing.title %></h4>
-          <p class="card-text"><%= landing.subtitle %></p>
-          <% if landing.user == current_user %>
-            <%= link_to 'Edit', edit_landing_path(landing), class: 'btn btn-secondary' %>
-            <%= link_to 'Delete', landing, class: 'btn btn-secondary', method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-        </div>
+      <%= link_to(landing) do %>
+          <%= image_tag attachment_url(landing, :hero_image), class: 'card-img-top', style:'width: 100%;' %>
+          <div class="card card-block">
+            <h4 class="card-title"><%= landing.title %></h4>
+            <p class="card-text"><%= landing.subtitle %></p>
+            <% if landing.user == current_user %>
+              <%= link_to 'Edit', edit_landing_path(landing), class: 'btn btn-secondary' %>
+              <%= link_to 'Delete', landing, class: 'btn btn-secondary', method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+          </div>
+      <% end %>
       </div>
-    <% end %>
     <% end %>
   </div>
 </div>
