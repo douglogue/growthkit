@@ -1,4 +1,5 @@
 class LandingsController < ApplicationController
+
   before_action :set_landing, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:show]
   
@@ -11,6 +12,7 @@ class LandingsController < ApplicationController
   # GET /landings/1
   # GET /landings/1.json
   def show
+    render layout: 'user_landings'
   end
 
   # GET /landings/new
@@ -65,11 +67,11 @@ class LandingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_landing
-      @landing = Landing.find(params[:id])
+      @landing = Landing.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def landing_params
-      params.require(:landing).permit(:title, :subtitle, :slug, :hero_image)
+      params.require(:landing).permit(:title, :subtitle, :slug, :hero_image, :logo)
     end
 end

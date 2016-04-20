@@ -1,8 +1,7 @@
-<%= form_for(@landing) do |f| %>
+ <%= simple_form_for @landing do |f| %>
   <% if @landing.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@landing.errors.count, "error") %> prohibited this landing from being saved:</h2>
-
       <ul>
       <% @landing.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,24 +9,12 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :subtitle %><br>
-    <%= f.text_field :subtitle %>
-  </div>
-  <div class="field">
-    <%= f.label :slug %><br>
-    <%= f.text_field :slug %>
-  </div>
-    <div class="field">
-    <%= f.label 'Background Image' %><br>
-    <%= f.attachment_field :hero_image %>
-  </div>
+    <%= f.attachment_field :logo, label: 'Logo' %>
+    <%= f.input :title, label: 'Title' %>
+    <%= f.input :subtitle, label: 'Subtitle' %>
+    <%= f.input :slug, label: 'Slug' %>
+    <%= f.attachment_field :hero_image, label: 'Background Image' %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Save'%>
   </div>
 <% end %>
