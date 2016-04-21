@@ -1,7 +1,12 @@
 class LandingsController < ApplicationController
-
   before_action :set_landing, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:show]
+
+  before_filter :initialize_lead
+
+  def initialize_lead
+    @lead = Lead.new
+  end
   
   # GET /landings
   # GET /landings.json
@@ -13,6 +18,10 @@ class LandingsController < ApplicationController
   # GET /landings/1.json
   def show
     render layout: 'user_landings'
+  end
+
+  def lead
+    @lead = Lead.new
   end
 
   # GET /landings/new

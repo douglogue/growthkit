@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :landings
   has_many :promo_bars
+  has_many :leads
 
   after_create :subscribe_user_to_mailing_list
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420210225) do
+ActiveRecord::Schema.define(version: 20160421202005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,16 @@ ActiveRecord::Schema.define(version: 20160420210225) do
 
   add_index "landings", ["slug"], name: "index_landings_on_slug", unique: true, using: :btree
   add_index "landings", ["user_id"], name: "index_landings_on_user_id", using: :btree
+
+  create_table "leads", force: :cascade do |t|
+    t.string   "email"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "leads", ["email"], name: "index_leads_on_email", using: :btree
+  add_index "leads", ["user_id"], name: "index_leads_on_user_id", using: :btree
 
   create_table "promo_bars", force: :cascade do |t|
     t.string   "title"
