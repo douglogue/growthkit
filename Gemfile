@@ -19,6 +19,8 @@ gem "refile-mini_magick"
 gem 'gibbon', '~> 2.2', '>= 2.2.3'
 gem 'sucker_punch', '~> 2.0'
 gem 'friendly_id', '~> 5.1'
+gem "administrate", '0.2.0.rc1'
+gem 'administrate-field-image', '~> 0.0.2'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'

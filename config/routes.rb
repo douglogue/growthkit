@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :users
+resources :landings
+resources :leads
+resources :promo_bars
+
+    root to: "users#index"
+  end
+
   resources :leads
   resources :promo_bars
   devise_for :users
