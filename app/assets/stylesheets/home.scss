@@ -1,6 +1,26 @@
 .hero {
+  color: $white;
   text-align: center;
   margin: 12em auto 0;
   width: 100%;
-  height: 100vh;
+}
+
+.hero-bg.home {
+  @extend .hero-bg;
+  background: #52E673;
+}
+
+.hero-bg.home:before { background: transparent; }
+.navbar.navbar-trans { background: transparent; }
+
+h1, .navbar-brand {
+  font-family: $font-family-header;
+}
+
+.navbar {
+  border-radius: 0;
+}
+
+.navbar a:not(.dropdown-item) {
+  color: $white;
 }

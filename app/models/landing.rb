@@ -3,6 +3,7 @@ class Landing < ActiveRecord::Base
   friendly_id :name, use: :slugged
 
   belongs_to :user
+  has_many :leads
   attachment :hero_image
   attachment :logo
 end

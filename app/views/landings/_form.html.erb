@@ -9,12 +9,22 @@
       </ul>
     </div>
   <% end %>
-    <%= f.attachment_field :logo, label: 'Logo' %>
+    <div class="form-group">
+      <%= f.label :logo %><br />
+      <label class="custom-file">
+        <%= f.attachment_field :logo, label: 'Logo', class: 'form-control custom-file-input' %>
+        <span class="custom-file-control logo"></span>
+      </label>
+    </div>
+    <div class="form-group">
+      <%= f.label :background_image %><br />
+      <label class="custom-file">
+        <%= f.attachment_field :hero_image, label: 'Background Image', class: 'form-control custom-file-input' %>
+        <span class="custom-file-control logo"></span>
+      </label>
+    </div>
     <%= f.input :title, label: 'Title' %>
     <%= f.input :subtitle, label: 'Subtitle' %>
-    <%= f.input :slug, label: 'Slug' %>
-    <%= f.attachment_field :hero_image, label: 'Background Image' %>
-  <div class="actions">
-    <%= f.submit 'Save'%>
-  </div>
+    <%= f.input :slug, label: 'URL' %>
+    <%= f.submit 'Save', class: 'btn btn-primary' %>
 <% end %>

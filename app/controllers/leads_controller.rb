@@ -5,7 +5,11 @@ class LeadsController < ApplicationController
   # GET /leads
   # GET /leads.json
   def index
-    @leads = current_user.leads.all
+    if params[:landing_id].present?
+      @leads = Landing.find_by_slug(params[:landing_id]).leads.all
+    else
+      @leads = current_user.leads.all
+    end
   end
 
   # GET /leads/1
@@ -28,7 +32,8 @@ class LeadsController < ApplicationController
     @lead = Lead.new(lead_params)
     respond_to do |format|
       if @lead.save
-        format.html { redirect_to @lead, notice: 'Lead was successfully created.' }
+        # format.html { redirect_to '/landings/' + @lead.landing_id, notice: 'Lead was successfully created.' }
+        format.html { redirect_to early_access_path(@lead), notice: 'You\'ve been added to the early access list.' }
         format.json { render :show, status: :created, location: @lead }
       else
         format.html { render :new }
@@ -69,6 +74,6 @@ class LeadsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lead_params
-      params.require(:lead).permit(:email, :user_id)
+      params.require(:lead).permit(:email, :user_id, :landing_id, :referer_id)
     end
 end

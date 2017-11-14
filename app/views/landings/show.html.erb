@@ -2,29 +2,31 @@
 <%= content_for :meta_description, @landing.subtitle %>
 
 <% if @landing.user == current_user %>
-  <%= link_to 'Edit', edit_landing_path(@landing) %> | 
+  <%= link_to 'Edit', edit_landing_path(@landing) %> |
   <%= link_to 'Back', landings_path %>
 <% end %>
 <div class="hero-bg">
-  <%= image_tag attachment_url(@landing, :hero_image), class: 'img-fluid' %>
+  <%= image_tag attachment_url(@landing, :hero_image), class: 'hero-bg-image' %>
 </div>
 
-<div class="hero">
-  <%= image_tag attachment_url(@landing, :logo, :fill, 150, 150) %>
+<div class="hero hero-landing">
+  <%= image_tag attachment_url(@landing, :logo), class: 'landing-logo' unless @landing.logo == nil %>
   <h1><%= @landing.title %></h1>
   <p><%= @landing.subtitle %></p>
-  <%= simple_form_for(@lead) do |f| %>
-    <%= f.error_notification %>
-
-    <div class="form-inputs">
-      <%= f.input :email %>
-      <%= f.hidden_field :user_id, :value=> @landing.user_id %>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <%= simple_form_for(@lead, html: { class: 'form-inline' }) do |f| %>
+        <%= f.error_notification %>
+        <div class="form-group">
+          <%= f.input :email, class: 'form-control', label: false %>
+          <%= f.hidden_field :user_id, :value=> @landing.user_id %>
+          <%= f.hidden_field :landing_id, :value=> @landing.id %>
+          <%= f.hidden_field :referer_id, :value=> params[:ref] %>
+        </div>
+        <div class="form-group">
+          <%= f.submit 'Get Early Access', class: 'btn btn-primary', id: 'leadBtn' %>
+        </div>
+      <% end %>
     </div>
-
-    <div class="form-actions">
-      <%= f.button :submit %>
-    </div>
-  <% end %>
-
-  <button class="btn btn-primary">Get on the list</button>
+  </div>
 </div>

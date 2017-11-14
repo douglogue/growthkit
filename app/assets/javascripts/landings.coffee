@@ -1,10 +1,6 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-# hideAlertMsg = ->
-#   $('#alertMsg').slideUp()
-#   return
-
-# $(document).ready ->
-#   setTimeout hideAlertMsg, 500
-#   return
+$ ->
+  $('.landing-card').hover ->
+    $('.card, .card-img-top').toggleClass 'landing-card-hover'

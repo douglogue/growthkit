@@ -1,27 +1,31 @@
-<h1>Listing Leads</h1>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container page-header">
+    <h1 class="display-3">Leads</h1>
+    <%= link_to 'Create New Lead', new_lead_path, class: 'btn btn-primary' %>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <table class="table table-hover table-striped">
+      <thead class="">
+        <tr>
+          <th>ID</th>
+          <th>Email</th>
+          <th>Landing Page</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @leads.each do |lead| %>
-      <tr>
-        <td><%= lead.email %></td>
-        <td><%= lead.user_id %></td>
-        <td><%= link_to 'Show', lead %></td>
-        <td><%= link_to 'Edit', edit_lead_path(lead) %></td>
-        <td><%= link_to 'Destroy', lead, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Lead', new_lead_path %>
+      <tbody>
+        <% @leads.each do |lead| %>
+          <tr>
+            <td><%= lead.user_id %></td>
+            <td><%= lead.email %></td>
+            <td><%= lead_landing_page(lead).title %></td>
+            <td class="table-actions"><%= link_to 'Show', lead %> | <%= link_to 'Edit', edit_lead_path(lead) %> | <%= link_to 'Destroy', lead, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

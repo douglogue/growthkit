@@ -9,4 +9,99 @@
   right: 0;
   bottom: 0;
   z-index:-1;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero-bg:before {
+  content: ' ';
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,.75);
+  will-change: transform;
+}
+
+.hero-bg-image {
+  width: 100vw;
+}
+
+.hero-landing {
+  color: #fbfbfb;
+}
+
+.hero-landing h1 {
+  margin: .25em auto .125em;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.landing-logo {
+  height: 30px;
+}
+
+.landing-card a:not(.btn){
+  color: $gray-dark;
+  text-decoration: none;
+}
+
+.landing-card-hover {
+  @include material-shadow($z-depth: 2, $strength: .75);
+}
+
+.custom-file {
+  cursor: pointer;
+  display: inline-block;
+  height: 2.5rem;
+  margin-bottom: 0;
+  max-width: 100%;
+  position: relative;
+  .custom-file-input {
+    height: 2.5rem;
+    margin: 0;
+    max-width: 100%;
+    min-width: 14rem;
+    opacity: 0;
+  }
+  .custom-file-control {
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+    color: #464a4c;
+    height: 2.5rem;
+    line-height: 1.5;
+    padding: .5rem 1rem;
+    pointer-events: none;
+    user-select: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 5;
+  }
+  .custom-file-control::before {
+    background-color: #eceeef;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 0 .25rem .25rem 0;
+    content: 'Browse';
+    color: #464a4c;
+    display: block;
+    height: 2.5rem;
+    line-height: 1.5;
+    padding: .5rem 1rem;
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    z-index: 6;
+  }
+  .custom-file-control::after {
+    content: "Choose file...";
+  }
 }
