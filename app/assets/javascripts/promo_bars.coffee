@@ -5,6 +5,6 @@ showPromoBar = ->
   $('#promoBar').slideDown()
   return
 
-$(document).ready ->
-  setTimeout showPromoBar, 2000
+$(document).on 'ready page:load', ->
+  setTimeout showPromoBar, 1000
   return

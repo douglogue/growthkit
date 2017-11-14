@@ -1,10 +1,11 @@
 class PromoBarsController < ApplicationController
   before_action :set_promo_bar, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, except: [:show]
 
   # GET /promo_bars
   # GET /promo_bars.json
   def index
-    @promo_bars = PromoBar.all
+    @promo_bars = current_user.promo_bars.all
   end
 
   # GET /promo_bars/1
@@ -14,7 +15,8 @@ class PromoBarsController < ApplicationController
 
   # GET /promo_bars/new
   def new
-    @promo_bar = PromoBar.new
+    # @promo_bar = PromoBar.new
+    @promo_bar = current_user.promo_bars.build
   end
 
   # GET /promo_bars/1/edit
@@ -24,8 +26,7 @@ class PromoBarsController < ApplicationController
   # POST /promo_bars
   # POST /promo_bars.json
   def create
-    @promo_bar = PromoBar.new(promo_bar_params)
-
+    @promo_bar = current_user.promo_bars.build(promo_bar_params)
     respond_to do |format|
       if @promo_bar.save
         format.html { redirect_to @promo_bar, notice: 'Promo bar was successfully created.' }

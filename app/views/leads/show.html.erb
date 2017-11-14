@@ -1,12 +1,29 @@
-<p>
-  <strong>Email:</strong>
-  <%= @lead.email %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @lead.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_lead_path(@lead) %> |
-<%= link_to 'Back', leads_path %>
+<% if @lead.user == current_user %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 m-t-3">
+      <div class="card card-block">
+        <p><strong>ID: </strong><%= @lead.id %></p>
+        <p><strong>Sign Up Date: </strong><%= @lead.created_at.to_date %></p>
+        <p><strong>Email: </strong><%= @lead.email %></p>
+        <p><strong>Landing Page: </strong><%= lead_landing_page(@lead).title %></p>
+        <%= link_to 'Edit', edit_lead_path(@lead) %> |
+        <%= link_to 'Back', leads_path %>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="hero-bg">
+    <%= image_tag attachment_url(lead_landing_page(@lead), :hero_image), class: 'hero-bg-image' %>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Woot! You're number <%= @lead.id %> in line to get access.</h2>
+        <p>Want to get access faster? Share the link below with your friends:</p><br />
+        <p><strong><%= landings_url + landings_path + '/' + @lead.landing_id + '/' + '?ref=' +  @lead.id.to_s %></strong></p>
+        <%#= Lead.count %>
+        <%#= @lead.id - Lead.count %>
+      </div>
+    </div>
+  </div>
+<% end %>
